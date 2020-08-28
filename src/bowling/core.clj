@@ -1,5 +1,4 @@
 (ns bowling.core
   (:gen-class))
 
-(defn score [rolls]
-  0)
+(defn score [rolls] 0)
