@@ -5,7 +5,11 @@
 (deftest group-frames-test
   (testing "can group rolls into frames"
     (is (= [[1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1]]
-           (group-frames [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1])))))
+           (group-frames [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
+  (testing "can group strike frame into single-roll frame"
+    (is (= [[10] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1]]
+           (group-frames [10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
+  )
 
 (deftest spare?-test
   (testing "can tell when frame is a spare"
@@ -42,7 +46,7 @@
   (testing "can map spare frame to frame score"
     (is (= [11 2 3 4 5 6 7 8 9 0]
            (to-frame-scores [[1 9] [1 1] [1 2] [1 3] [1 4] [1 5] [1 6] [1 7] [1 8] [0 0]]))))
-  '(testing "can map strike frame to frame score"
+  (testing "can map strike frame to frame score"
     (is (= [12 2 3 4 5 6 7 8 9 0]
            (to-frame-scores [[10] [1 1] [1 2] [1 3] [1 4] [1 5] [1 6] [1 7] [1 8] [0 0]])))))
 

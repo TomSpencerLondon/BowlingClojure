@@ -2,8 +2,16 @@
   (:gen-class))
 
 (defn group-frames [rolls]
-  (partition 2 rolls)
-  )
+  (loop [remaining rolls
+         frames []]
+      (if (empty? remaining)
+        frames
+        (if (= 10 (first remaining))
+          (recur (drop 1 remaining)
+                 (conj frames (take 1 remaining)))
+          (let [value 2]
+            (recur (drop value remaining)
+                   (conj frames (take value remaining))))))))
 
 (defn spare? [frame]
   (and (= 10 (reduce + frame))
