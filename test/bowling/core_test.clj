@@ -9,7 +9,9 @@
 
 (deftest spare?-test
   (testing "can tell when frame is a spare"
-    (is (spare? [5 5]))))
+    (is (spare? [5 5])))
+    (is (not (spare? [1 2])))
+    (is (not (spare? [10]))))
 
 (deftest next-frame-score-test
   (testing "can calc next frame score for a simple frame"

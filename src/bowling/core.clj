@@ -6,7 +6,8 @@
   )
 
 (defn spare? [frame]
-  (= 10 (reduce + frame)))
+  (and (= 10 (reduce + frame))
+       (= 2 (count frame))))
 
 (defn next-frame-score [[frame & other]]
   (if (spare? frame)
