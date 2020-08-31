@@ -6,7 +6,9 @@
   )
 
 (defn next-frame-score [[frame & other]]
-  (reduce + frame))
+  (if (= 10 (reduce + frame))
+    (+ (reduce + frame) (first (first other)))
+    (reduce + frame)))
 
 (defn to-frame-scores [frames]
   (loop [remaining frames

@@ -9,7 +9,10 @@
 
 (deftest next-frame-score-test
   (testing "can calc next frame score for a simple frame"
-    (is (= 5 (next-frame-score [[3 2]])))))
+    (is (= 5 (next-frame-score [[3 2]]))))
+  (testing "can calc next frame score for a spare frame"
+    (is (= 11 (next-frame-score [[5 5] [1 2]]))))
+  )
 
 
 (deftest to-frame-scores-test
