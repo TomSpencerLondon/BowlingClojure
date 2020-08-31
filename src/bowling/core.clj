@@ -30,11 +30,13 @@
 
 (defn next-frame-score [[frame & other]]
   (let [simple-score (reduce + frame)]
-    (if (= 10 (first frame))
+    (cond
+      (= 10 (first frame))
       (+ simple-score (strike-extra-score other))
-      (if (spare? frame)
-        (+ simple-score (spare-extra-score other))
-        simple-score))))
+      (spare? frame)
+      (+ simple-score (spare-extra-score other))
+      :else
+      simple-score)))
 
 (defn to-frame-scores [frames]
   (loop [remaining frames
