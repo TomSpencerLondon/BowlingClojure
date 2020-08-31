@@ -2,6 +2,17 @@
   (:require [clojure.test :refer :all]
             [bowling.core :refer :all]))
 
+(deftest next-frame-size-test
+  (testing "size is 1 when next frame is a strike"
+    (is (= 1 (next-frame-size [10 1 1 1 1]))))
+  (testing "size is 2 when next frame is a simple frame"
+    (is (= 2 (next-frame-size [1 1 1 1 1]))))
+  (testing "size is 2 when next frame is a spare frame"
+    (is (= 2 (next-frame-size [5 5 1 1 1]))))
+  (testing "size is 3 when next frame is a spare or a strike and is the last frame"
+    (is (= 3 (next-frame-size [5 5 1])))))
+
+
 (deftest group-frames-test
   (testing "can group rolls into frames"
     (is (= [[1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1]]
@@ -9,6 +20,9 @@
   (testing "can group strike frame into single-roll frame"
     (is (= [[10] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1]]
            (group-frames [10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
+  '(testing "can group a spare frame with its bonus roll"
+    (is (= [[1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [5 5 3]]
+           (group-frames [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 3]))))
   )
 
 (deftest spare?-test
@@ -60,4 +74,6 @@
     (is (= 29 (score [9 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
   (testing "strike-game score"
     (is (= 30 (score [10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
+  '(testing "strike-game score"
+    (is (= 150 (score [5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5]))))
   )
