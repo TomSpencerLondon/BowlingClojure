@@ -58,6 +58,6 @@
     (is (= 90 (score [9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0]))))
   (testing "spare-game score"
     (is (= 29 (score [9 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
-  '(testing "strike-game score"
-    (is (= 30 (score [10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
+  (testing "strike-game score"
+    (is (= 30 (score [10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
   )
