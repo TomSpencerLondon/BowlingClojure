@@ -10,7 +10,8 @@
   (testing "size is 2 when next frame is a spare frame"
     (is (= 2 (next-frame-size [5 5 1 1 1]))))
   (testing "size is 3 when next frame is a spare or a strike and is the last frame"
-    (is (= 3 (next-frame-size [5 5 1])))))
+    (is (= 3 (next-frame-size [5 5 1])))
+    (is (= 3 (next-frame-size [10 5 1])))))
 
 
 (deftest group-frames-test
