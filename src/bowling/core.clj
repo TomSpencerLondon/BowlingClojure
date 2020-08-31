@@ -9,6 +9,10 @@
   (and (= 10 (reduce + frame))
        (= 2 (count frame))))
 
+
+(defn spare-extra-score [remaining-frames]
+  (first (first remaining-frames)))
+
 (defn next-frame-score [[frame & other]]
   (let [simple-score (reduce + frame)]
     (if (spare? frame)

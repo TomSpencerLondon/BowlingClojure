@@ -13,6 +13,11 @@
     (is (not (spare? [1 2])))
     (is (not (spare? [10]))))
 
+(deftest spare-extra-score-test
+        (testing "can calc the spare extra score given next frames"
+          (is (= 4 (spare-extra-score [[4 3]]))))
+          (is (= 9 (spare-extra-score [[9 0]]))))
+
 (deftest next-frame-score-test
   (testing "can calc next frame score for a simple frame"
     (is (= 5 (next-frame-score [[3 2]]))))
