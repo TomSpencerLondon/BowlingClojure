@@ -77,4 +77,6 @@
     (is (= 30 (score [10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]))))
   (testing "strike-game score"
     (is (= 150 (score [5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5]))))
+  (testing "all-strike-game score"
+    (is (= 300 (score [10 10 10 10 10 10 10 10 10 10 10 10]))))
   )
