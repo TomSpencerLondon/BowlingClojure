@@ -2,12 +2,15 @@
   (:gen-class))
 
 
+(defn next-frame-size [remaining-rolls]
+  (if (= 10 (first remaining-rolls)) 1 2 ))
+
 (defn group-frames [rolls]
   (loop [remaining rolls
          frames []]
     (if (empty? remaining)
       frames
-      (let [size (if (= 10 (first remaining)) 1 2 )]
+      (let [size (next-frame-size remaining)]
         (recur (drop size remaining)
                (conj frames (take size remaining)))))))
 
