@@ -16,7 +16,7 @@
 (defn next-frame-score [[frame & other]]
   (let [simple-score (reduce + frame)]
     (if (spare? frame)
-      (+ simple-score (first (first other)))
+      (+ simple-score (spare-extra-score other))
       simple-score)))
 
 (defn to-frame-scores [frames]
