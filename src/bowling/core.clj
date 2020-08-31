@@ -5,8 +5,11 @@
   (partition 2 rolls)
   )
 
+(defn spare? [frame]
+  (= 10 (reduce + frame)))
+
 (defn next-frame-score [[frame & other]]
-  (if (= 10 (reduce + frame))
+  (if (spare? frame)
     (+ (reduce + frame) (first (first other)))
     (reduce + frame)))
 

@@ -7,6 +7,10 @@
     (is (= [[1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1]]
            (group-frames [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1])))))
 
+(deftest spare?-test
+  (testing "can tell when frame is a spare"
+    (is (spare? [5 5]))))
+
 (deftest next-frame-score-test
   (testing "can calc next frame score for a simple frame"
     (is (= 5 (next-frame-score [[3 2]]))))
