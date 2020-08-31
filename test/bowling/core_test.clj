@@ -7,10 +7,18 @@
     (is (= [[1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1] [1 1]]
            (group-frames [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1])))))
 
+(deftest next-frame-score-test
+  (testing "can calc next frame score for a simple frame"
+    (is (= 5 (next-frame-score [[3 2]])))))
+
+
 (deftest to-frame-scores-test
-  (testing "can map frames to frame scores"
+  '(testing "can map frames to frame scores"
     (is (= [1 2 3 4 5 6 7 8 9 0]
            (to-frame-scores [[ 1 0] [ 1 1] [ 1 2] [ 1 3] [ 1 4] [ 1 5] [ 1 6] [ 1 7] [ 1 8] [ 0 0]]))))
+  '(testing "can map spare frame to frame score"
+    (is (= [1 2 3 4 5 6 7 8 9 0]
+           (to-frame-scores [[1 9] [1 1] [1 2] [1 3] [1 4] [1 5] [1 6] [1 7] [1 8] [1 9] [0 0]]))))
   )
 
 (deftest score-test
