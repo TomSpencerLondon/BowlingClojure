@@ -35,10 +35,10 @@
            (to-frame-scores [[1 9] [1 1] [1 2] [1 3] [1 4] [1 5] [1 6] [1 7] [1 8] [0 0]])))))
 
 (deftest score-test
-  '(testing "zero-game score"
+  (testing "zero-game score"
     (is (= 0 (score [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]))))
-  '(testing "simple game score no spares or strikes"
+  (testing "simple game score no spares or strikes"
     (is (= 20 (score [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1])))
     (is (= 90 (score [9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0]))))
-  '(testing "spare-game score"
+  (testing "spare-game score"
     (is (= 29 (score [9 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1])))))
