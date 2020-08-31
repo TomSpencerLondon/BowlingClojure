@@ -1,17 +1,15 @@
 (ns bowling.core
   (:gen-class))
 
+
 (defn group-frames [rolls]
   (loop [remaining rolls
          frames []]
-      (if (empty? remaining)
-        frames
-        (if (= 10 (first remaining))
-          (recur (drop 1 remaining)
-                 (conj frames (take 1 remaining)))
-          (let [value 2]
-            (recur (drop value remaining)
-                   (conj frames (take value remaining))))))))
+    (if (empty? remaining)
+      frames
+      (let [size (if (= 10 (first remaining)) 1 2 )]
+        (recur (drop size remaining)
+               (conj frames (take size remaining)))))))
 
 (defn spare? [frame]
   (and (= 10 (reduce + frame))
